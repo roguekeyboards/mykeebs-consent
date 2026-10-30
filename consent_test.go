@@ -31,7 +31,7 @@ func TestPageEscapesConfig(t *testing.T) {
 	if strings.Contains(body, "<script>alert(1)") {
 		t.Error("a config value broke out of its script element")
 	}
-	if !strings.Contains(body, `\"</script>`) {
+	if !strings.Contains(body, `\"\u003c/script\u003e`) {
 		t.Error("config value wasn't JSON-escaped")
 	}
 }
@@ -50,7 +50,10 @@ func TestPageLeavesTheEmbeddedPageUnchanged(t *testing.T) {
 func TestPageRendersEachConfigSeparately(t *testing.T) {
 	first := render(t, Config{PublicToken: "first"})
 	second := render(t, Config{PublicToken: "second"})
-	if !strings.Contains(first, `"first"`) || !strings.Contains(second, `"second"`) || strings.Contains(second, `"first"`) {
+	if !strings.Contains(first, `{"publicToken":"first"`) || !strings.Contains(second, `{"publicToken":"second"`) {
+		t.Error("a render is missing its config")
+	}
+	if strings.Contains(second, `{"publicToken":"first"`) {
 		t.Error("renders share state")
 	}
 }

@@ -1,0 +1,14 @@
+Copyright (c) 2026 Jay. All rights reserved.
+
+The code in this repository is covered by the MIT license, in LICENSE-MIT.
+
+dist/authorize.html also contains material under other terms, as its opening
+comment lists:
+
+- The mykeebs name, logo, icons and design tokens, under the terms in
+  @roguekeyboards/mykeebs-brand's LICENSE. They are not covered by the MIT
+  license. They may be used to refer to mykeebs, and by mykeebs' own software,
+  but not as the name or logo of anything else, and not in a way that implies
+  mykeebs endorses or is connected with anything it isn't.
+- JetBrains Mono and Inter, under the SIL Open Font License 1.1.
+- Stytch's @stytch/vanilla-js, under the MIT license.

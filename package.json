@@ -1,0 +1,23 @@
+{
+	"name": "mykeebs-consent",
+	"version": "0.0.0",
+	"private": true,
+	"description": "mykeebs' sign-in page, built into one self-contained file",
+	"license": "SEE LICENSE IN LICENSE",
+	"type": "module",
+	"scripts": {
+		"build": "node src/build.js",
+		"test": "node --test",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write ."
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@roguekeyboards/mykeebs-brand": "^1.71.0",
+		"@stytch/vanilla-js": "6.3.0",
+		"eslint": "^10.14.0",
+		"eslint-config-prettier": "^10.1.8",
+		"globals": "^17.13.0",
+		"prettier": "^3.9.10"
+	}
+}

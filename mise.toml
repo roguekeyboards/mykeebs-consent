@@ -1,0 +1,40 @@
+[tools]
+node = "24.22.2"
+go = "1.27.3"
+golangci-lint = "2.15.0"
+actionlint = "1.7.12"
+shellcheck = "0.11.0"
+
+# GITHUB_PACKAGES_TOKEN is set in mise.local.toml (gitignored), a PAT with
+# read:packages scope, used by .npmrc to install @roguekeyboards/mykeebs-brand
+# from GitHub Packages.
+
+[tasks.lint]
+alias = "l"
+description = "Lint the code and GitHub Actions workflows"
+run = [
+  "npm run lint",
+  "golangci-lint run .",
+  "actionlint",
+]
+
+[tasks.test]
+alias = "t"
+description = "Run the Node and Go tests"
+run = [
+  "npm test",
+  "go test -race -count=1 .",
+]
+
+[tasks.build]
+alias = "b"
+description = "Build the page and vet the Go module"
+run = [
+  "npm run build",
+  "go build .",
+  "go vet .",
+]
+
+[tasks.check-generated]
+description = "Fail if dist/authorize.html doesn't match its sources"
+file = "scripts/check-generated.sh"

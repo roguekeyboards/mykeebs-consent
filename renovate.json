@@ -1,0 +1,44 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"config:recommended",
+		"helpers:pinGitHubActionDigestsToSemver",
+		":semanticCommits",
+		"security:minimumReleaseAgeNpm"
+	],
+	"automerge": true,
+	"prHourlyLimit": 0,
+	"constraints": {
+		"npm": "^11"
+	},
+	"packageRules": [
+		{
+			"description": "These ship inside the page, so a bump rebuilds it and has to release",
+			"matchPackageNames": ["@roguekeyboards/**", "@stytch/vanilla-js"],
+			"semanticCommitType": "fix",
+			"postUpgradeTasks": {
+				"commands": ["npm run build"],
+				"fileFilters": ["dist/authorize.html"],
+				"executionMode": "branch"
+			}
+		},
+		{
+			"description": "Our own packages skip the release-age wait",
+			"matchPackageNames": ["@roguekeyboards/**"],
+			"minimumReleaseAge": null
+		}
+	],
+	"hostRules": [
+		{
+			"description": "@roguekeyboards/mykeebs-brand lives on GitHub Packages; the workflow passes its GITHUB_TOKEN",
+			"matchHost": "npm.pkg.github.com",
+			"hostType": "npm",
+			"token": "{{ secrets.PACKAGES_TOKEN }}"
+		}
+	],
+	"lockFileMaintenance": {
+		"enabled": true,
+		"automerge": true,
+		"schedule": ["before 12pm on monday"]
+	}
+}

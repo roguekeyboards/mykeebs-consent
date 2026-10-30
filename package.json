@@ -1,6 +1,6 @@
 {
 	"name": "mykeebs-consent",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"private": true,
 	"description": "mykeebs' sign-in page, built into one self-contained file",
 	"license": "SEE LICENSE IN LICENSE",

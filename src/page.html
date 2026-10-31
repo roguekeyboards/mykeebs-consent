@@ -104,7 +104,7 @@
     };
 
     // identityLabel picks the most human-recognizable string the IdP session
-    // carries. There's no kbdb username here (that lives behind the API, which
+    // carries. There's no mykeebs-api username here (that lives behind the API, which
     // the caller hasn't been authorized for yet), and a Discord login carries
     // only a numeric provider_subject - so this falls back to naming the
     // provider, and to nothing if even that's absent.
@@ -174,11 +174,11 @@
         // Discord's redirect back overwrites our OAuth query params with
         // the IdP's own (?token=...) - save/restore via localStorage.
         if (params.has('client_id')) {
-          localStorage.setItem('kbdb_oauth_qs', window.location.search);
+          localStorage.setItem('mykeebs_oauth_qs', window.location.search);
         } else if (params.has('token')) {
           await idpClient.authenticateByUrl({ session_duration_minutes: 60 });
-          const savedQs = localStorage.getItem('kbdb_oauth_qs');
-          localStorage.removeItem('kbdb_oauth_qs');
+          const savedQs = localStorage.getItem('mykeebs_oauth_qs');
+          localStorage.removeItem('mykeebs_oauth_qs');
           if (savedQs) {
             window.history.replaceState({}, '', window.location.pathname + savedQs);
             params = new URLSearchParams(savedQs);

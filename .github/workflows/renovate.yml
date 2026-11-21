@@ -34,10 +34,11 @@ jobs:
         env:
           RENOVATE_REPOSITORIES: ${{ github.repository }}
           RENOVATE_PLATFORM_COMMIT: enabled
-          RENOVATE_ALLOWED_COMMANDS: '["^npm run build$"]'
+          RENOVATE_ALLOWED_COMMANDS: '["^npm ci$", "^npm run build$"]'
           LOG_LEVEL: ${{ inputs.log-level || 'info' }}
           # GitHub Packages' npm registry doesn't accept App installation tokens, so lookups
-          # (hostRules) and npm's own lockfile updates (.npmrc) both use the job's GITHUB_TOKEN.
+          # (hostRules) and npm itself (.npmrc: lockfile updates and the rebuild's npm ci) use the job's
+          # GITHUB_TOKEN.
           RENOVATE_SECRETS: '{"PACKAGES_TOKEN": "${{ secrets.GITHUB_TOKEN }}"}'
           RENOVATE_CUSTOM_ENV_VARIABLES: '{"GITHUB_PACKAGES_TOKEN": "${{ secrets.GITHUB_TOKEN }}"}'
         with:

@@ -17,7 +17,7 @@
 			"matchPackageNames": ["@roguekeyboards/**", "@stytch/vanilla-js"],
 			"semanticCommitType": "fix",
 			"postUpgradeTasks": {
-				"commands": ["npm run build"],
+				"commands": ["npm ci", "npm run build"],
 				"fileFilters": ["dist/authorize.html"],
 				"executionMode": "branch"
 			}

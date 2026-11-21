@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/roguekeyboards/mykeebs-consent/compare/v1.0.1...v1.0.2) (2026-11-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @stytch/vanilla-js to v6.4.0 ([#25](https://github.com/roguekeyboards/mykeebs-consent/issues/25)) ([d0f9de5](https://github.com/roguekeyboards/mykeebs-consent/commit/d0f9de5943b2abbb2880a1d97d886b30745867ed))
+
 ## [1.0.1](https://github.com/roguekeyboards/mykeebs-consent/compare/v1.0.0...v1.0.1) (2026-10-31)
 
 
